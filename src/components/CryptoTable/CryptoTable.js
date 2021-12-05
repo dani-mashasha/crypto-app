@@ -8,41 +8,86 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { Link } from '@mui/material';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
+
+
+
+
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0,
+});
+
 
 const columns = [  
   {
     id: 'rank',
     label: 'Rank',
+    align: 'center',
+
   },
-  { id: 'name', label: 'Name', minWidth: 170 ,},
-  { id: 'price:', label: 'Price', minWidth: 100 },
+  {
+    id: 'iconUrl',
+    label: 'Logo',
+    align: 'left',
+    format: (value) => <img style={{width:"20px", haigt: "20px", display:"flex"}} src={value} alt={value}/>,
+  },
+  { 
+    id: 'name',
+    label: 'Name', 
+    minWidth: 50 ,
+    align: 'left',
+
+  }, 
+  {
+    id: 'symbol',
+    label: 'Symbol',
+    minWidth: 50,
+    align: 'left',
+    format: (value) => <span style={{color: "red" }}>{value}</span>,
+  },
+  { id: 'price',
+    label: 'Price',
+    minWidth: 50 ,
+    align: 'left',
+    format: (value) => formatter.format(+value),
+  },
 
   {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    id: 'marketCap',
+    label: 'Market Cap',
+    minWidth: 50,
+    align: 'left',
+    format: (value) =>formatter.format(+value),
   },
   {
-    id: 'density',
-    label: 'Density',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
+    id: '24hVolume',
+    label: '24h Volume',
+    minWidth: 50,
+    align: 'left',
+    format: (value) =>formatter.format(+value),
   },
+  {
+    id: 'sparkline',
+    label: 'Sparkline',
+    minWidth: 50,
+    align: 'left',
+    format: (value) =><Sparklines data={value}>
+    <SparklinesLine color={ value.at(0) < value.at(-1) ? "green" : "red"} />
+  </Sparklines>,
+  },
+
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
 
 
 
 export default function CryptoTable(props) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
   const rows = props.coins;
 
   const handleChangePage = (event, newPage) => {
@@ -56,7 +101,7 @@ export default function CryptoTable(props) {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ maxHeight: 500 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -76,14 +121,22 @@ export default function CryptoTable(props) {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.uuid}>
+                    
+ 
+
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
+                        
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
+                          <Link href={row.coinrankingUrl} underline="none">
+
+                          {column.format 
                             ? column.format(value)
                             : value}
+                            
+                          </Link>
                         </TableCell>
                       );
                     })}
