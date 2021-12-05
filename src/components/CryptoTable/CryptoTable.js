@@ -13,8 +13,6 @@ import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 
 
-
-
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -77,7 +75,7 @@ const columns = [
     align: 'left',
     format: (value) =><Sparklines data={value}>
     <SparklinesLine color={ value.at(0) < value.at(-1) ? "green" : "red"} />
-  </Sparklines>,
+   </Sparklines>,
   },
 
 ];
@@ -122,9 +120,6 @@ export default function CryptoTable(props) {
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.uuid}>
-                    
- 
-
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
