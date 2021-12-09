@@ -8,7 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Link } from '@mui/material';
+import { Link, Skeleton } from '@mui/material';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 
@@ -99,7 +99,7 @@ export default function CryptoTable(props) {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 500 }}>
+      <TableContainer sx={{ maxHeight: 700 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -137,7 +137,11 @@ export default function CryptoTable(props) {
                     })}
                   </TableRow>
                 );
-              })}
+              })
+          }
+
+
+
           </TableBody>
         </Table>
       </TableContainer>

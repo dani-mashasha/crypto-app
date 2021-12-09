@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer.js'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
+import Loader from './components/Loader/Loader.js';
 
 const theme = createTheme({
     palette: {
@@ -28,13 +29,13 @@ const theme = createTheme({
 function App() {
 
   const [coins, setCoins] = useState([])
-
+  // ${process.env.REACT_APP_PROXY}${process.env.REACT_APP_BASEURL}
 useEffect(() => {
    fetch(`https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2/coins`, {
     method: "GET",
     headers: {
       "Content-Type" : "application/json",
-      "x-access-token": "coinranking5d559847204aab210812637bbeeef168d3bf0de6f2d29bbc",
+      "x-access-token": process.env.REACT_APP_APIKEY ,
       "Access-Control-Allow-Origin": "*"
     }
   }).then((response) => {
@@ -42,6 +43,8 @@ useEffect(() => {
       response.json().then((json)=> {
         console.log(json.data.coins[0])
         setCoins(json.data.coins)})
+        console.log(process.env
+          )
     }
   }).catch((error)=> console.log(error))
 
@@ -53,8 +56,13 @@ useEffect(() => {
     <ThemeProvider theme={theme}>
 
     <div className="App">
+      {console.log(process.env.REACT_APP_APIKEY)}
       <Navbar />
-      <CryptoTable coins = {coins}/>
+      {coins.length > 0?
+       <CryptoTable coins = {coins}/>
+      : <Loader/>
+      }
+      
       <Footer />
     </div>
     
