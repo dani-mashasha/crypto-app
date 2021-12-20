@@ -2,10 +2,11 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar.js'
 import CryptoTable from './components/CryptoTable/CryptoTable.js'
 import Footer from './components/Footer/Footer.js'
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import Loader from './components/Loader/Loader.js';
+import getCoins from './Api/coins.js'
+
 
 const theme = createTheme({
     palette: {
@@ -27,27 +28,19 @@ const theme = createTheme({
 
 
 function App() {
-
   const [coins, setCoins] = useState([])
-  // ${process.env.REACT_APP_PROXY}${process.env.REACT_APP_BASEURL}
-useEffect(() => {
-   fetch(`https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2/coins`, {
-    method: "GET",
-    headers: {
-      "Content-Type" : "application/json",
-      "x-access-token": process.env.REACT_APP_APIKEY ,
-      "Access-Control-Allow-Origin": "*"
-    }
-  }).then((response) => {
-    if(response.ok){
-      response.json().then((json)=> {
-        console.log(json.data.coins[0])
-        setCoins(json.data.coins)})
-        console.log(process.env
-          )
-    }
-  }).catch((error)=> console.log(error))
 
+  // ${process.env.REACT_APP_PROXY}${process.env.REACT_APP_BASEURL}
+  
+const manageCoins = async () =>{
+  const response = await getCoins();
+  const {data} = response;
+  setCoins(data.coins)
+}
+
+
+useEffect(() => {
+  manageCoins()
 }, [])
 
 
@@ -56,7 +49,6 @@ useEffect(() => {
     <ThemeProvider theme={theme}>
 
     <div className="App">
-      {console.log(process.env.REACT_APP_APIKEY)}
       <Navbar />
       {coins.length > 0?
        <CryptoTable coins = {coins}/>
