@@ -1,11 +1,11 @@
 import './App.css';
-import Navbar from './components/Navbar/Navbar.js'
-import CryptoTable from './components/CryptoTable/CryptoTable.js'
-import Footer from './components/Footer/Footer.js'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
-import Loader from './components/Loader/Loader.js';
-import getCoins from './Api/coins.js'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from './components/Navbar/Navbar.js'
+import Footer from './components/Footer/Footer.js'
+import TopCoins from './views/TopCoins.js';
+import News from './views/News.js';
+import Home from './views/Home.js';
 
 
 const theme = createTheme({
@@ -28,35 +28,25 @@ const theme = createTheme({
 
 
 function App() {
-  const [coins, setCoins] = useState([])
 
-  // ${process.env.REACT_APP_PROXY}${process.env.REACT_APP_BASEURL}
-  
-const manageCoins = async () =>{
-  const response = await getCoins();
-  const {data} = response;
-  setCoins(data.coins)
-}
-
-
-useEffect(() => {
-  manageCoins()
-}, [])
-
+  // <Link className={classes.link} to="/products-grid">
 
 
   return (
     <ThemeProvider theme={theme}>
+      <Router>
 
-    <div className="App">
       <Navbar />
-      {coins.length > 0?
-       <CryptoTable coins = {coins}/>
-      : <Loader/>
-      }
-      
+
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/top-coins" element={<TopCoins/>}/>
+          <Route exact path="/news" element={<News/>}/>
+        </Routes>
+
       <Footer />
-    </div>
+
+      </Router>
     
     </ThemeProvider>
   );

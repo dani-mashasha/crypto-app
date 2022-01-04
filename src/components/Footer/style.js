@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 main:{
-  backgroundColor: "#666055" ,
+  backgroundColor: "#b5b5b5" ,
  padding:"50px",
  textAlign:"center"
 },

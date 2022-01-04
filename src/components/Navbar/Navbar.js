@@ -10,9 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from "react-router-dom";            
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const pages = [{name: "Top 50", link: "/top-coins"}, {name: "News", link: "/news"}];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,8 +41,10 @@ const Navbar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="div"
+            component={Link}
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            to="/"
+            className='logo'
           >
             CRYPTO-APP
           </Typography>
@@ -76,8 +79,9 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography className='link' textAlign="center"  component={Link} to ={page.link}>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -85,19 +89,25 @@ const Navbar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="div"
+            className='logo'
+            component={Link}
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            to = "/"
+            
           >
             CRYPTO-APP
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                component={Link}
+                className='link'
+                to ={page.link}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

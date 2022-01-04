@@ -1,0 +1,18 @@
+.link {
+    text-decoration: none;
+    color: black;
+}
+.logo{
+    text-decoration: none;
+    color: white;
+}
+.home {
+    min-height: 500px;
+}
+.news-grid{
+    min-height: 500px;
+};
+
+.top-coins{
+    min-height: 500px;
+};
