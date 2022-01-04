@@ -79,12 +79,9 @@ const columns = [
 
 ];
 
-
-
-
 export default function CryptoTable(props) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(20);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const rows = props.coins;
 
   const handleChangePage = (event, newPage) => {
@@ -98,6 +95,8 @@ export default function CryptoTable(props) {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+          <div style={{textAlign: "center"}}><h1>Top 50 Crypto Coins In The World </h1></div>
+
       <TableContainer sx={{ maxHeight: 700 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

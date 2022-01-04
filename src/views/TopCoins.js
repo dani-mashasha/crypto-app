@@ -30,6 +30,7 @@ function TopCoins() {
   return (
 
     <div className="top-coins">
+      
 
       {coins.length > 0?
        <CryptoTable coins = {coins}/>

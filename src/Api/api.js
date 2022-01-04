@@ -16,7 +16,7 @@ import axios from "axios";
   const newsOptions = {
     method: 'GET',
     url: 'https://bing-news-search1.p.rapidapi.com/news/search',
-    params: {q: 'crypto', freshness: 'Day', textFormat: 'Raw', safeSearch: 'Off'},
+    params: {q: 'crypto',count: '20', freshness: 'Day', textFormat: 'Raw', safeSearch: 'Off'},
     headers: {
       'x-bingapis-sdk': 'true',
       'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',

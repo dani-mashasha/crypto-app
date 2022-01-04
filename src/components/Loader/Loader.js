@@ -1,4 +1,4 @@
-import { CircularProgress, Grid, LinearProgress, Skeleton } from "@mui/material";
+import { CircularProgress, LinearProgress } from "@mui/material";
 import { Box } from "@mui/system";
 
 const Loader = () => {

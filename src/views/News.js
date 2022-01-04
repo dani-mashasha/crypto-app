@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {getNews} from '../Api/api.js'
+import Loader from '../components/Loader/Loader.js';
 import NewsGrid from '../components/NewGrid/NewsGrid.js';
 
 
@@ -13,12 +14,7 @@ function News() {
     const {data} = response;
     console.log(data.value)
     setNews(data.value)
-
-    // .then(function (response) {
-    //   console.log(response.data);
-    // }).catch(function (error) {
-    //   console.error(error);
-    // });
+    
   }
   catch{
     console.log("Data Error")
@@ -32,7 +28,9 @@ useEffect(() => {
   return (
 
     <div className="news-grid">
+      {news.length > 0 ? 
         <NewsGrid news = {news}/>
+        : <Loader/>}
     </div>
     
   );
