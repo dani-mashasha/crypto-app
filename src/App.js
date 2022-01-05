@@ -6,6 +6,8 @@ import Footer from './components/Footer/Footer.js'
 import TopCoins from './views/TopCoins.js';
 import News from './views/News.js';
 import Home from './views/Home.js';
+import { CryptoProvider } from "./contexts/CryptoContext.js";
+
 
 
 const theme = createTheme({
@@ -34,6 +36,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <CryptoProvider>
       <Router>
 
       <Navbar />
@@ -47,7 +50,7 @@ function App() {
       <Footer />
 
       </Router>
-    
+      </CryptoProvider>
     </ThemeProvider>
   );
 }

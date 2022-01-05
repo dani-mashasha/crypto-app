@@ -1,0 +1,24 @@
+.story-card{
+    padding: 10px;
+}
+
+.story-card a{
+    text-decoration: none;
+    color: black;
+ 
+ }
+.story-head{
+    display: flex;
+
+}
+.story-head img{
+    height: 100px;
+    width: 100px;
+
+}
+
+.story-bottom{
+    display: flex;
+    justify-content: space-between;
+
+}

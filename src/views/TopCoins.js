@@ -1,36 +1,21 @@
+import { useContext, useEffect } from 'react';
 import CryptoTable from '../components/CryptoTable/CryptoTable.js'
-import { useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader.js';
-import {getCoins} from '../Api/api.js'
+import { CryptoContext } from "../contexts/CryptoContext.js";
 
 
 
 function TopCoins() {
-  const [coins, setCoins] = useState([])
+  const { coins } = useContext(CryptoContext);
 
-  // ${process.env.REACT_APP_PROXY}${process.env.REACT_APP_BASEURL}
-  const manageCoins = async () =>{
-    try{
-        const response = await getCoins();
-        const {data} = response;
-        setCoins(data.data.coins)
-        
-    }
-    catch{
-        console.log("Data Error")
-    }
-   };
-
-    useEffect(() => {
-        manageCoins()
-    }, [])
-
-
-
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[])
+  
   return (
 
     <div className="top-coins">
-      
+      <div style={{textAlign: "center"}}><h1>Top 50 Crypto Coins In The World </h1></div>
 
       {coins.length > 0?
        <CryptoTable coins = {coins}/>
