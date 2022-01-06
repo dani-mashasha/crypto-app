@@ -19,7 +19,18 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.home h1 {
   color: white;
+  text-align: center;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 70px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .home h2 {
   padding: 15px;
