@@ -22,7 +22,8 @@ const coinsOptions = {
   url: `https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2/coins`,
   headers: {
     "Content-Type": "application/json",
-    "x-access-token": process.env.REACT_APP_APIKEY,
+    "x-access-token":
+      "coinranking5d559847204aab210812637bbeeef168d3bf0de6f2d29bbc",
     "Access-Control-Allow-Origin": "*",
   },
 };

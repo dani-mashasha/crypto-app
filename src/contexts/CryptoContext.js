@@ -9,13 +9,13 @@ export const CryptoProvider = (props) => {
 
   async function getData() {
     try {
-      const coinsResponse = await getCoins();
-      const coinsData = coinsResponse.data.data.coins;
-      setCoins(coinsData);
-
       const newsResponse = await getNews();
       const newsData = newsResponse.data.value;
       setNews(newsData);
+
+      const coinsResponse = await getCoins();
+      const coinsData = coinsResponse.data.data.coins;
+      setCoins(coinsData);
     } catch {
       console.log("Error: cant fech data...");
     }
