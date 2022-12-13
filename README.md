@@ -1,7 +1,7 @@
 # Crypto-app
 
 Cryptocurrency information web application.
-Link - https://crypto-app-1.herokuapp.com/
+Link - https://crypto-app-dani.onrender.com
 
 ![Screenshot (18)](https://user-images.githubusercontent.com/55653032/184689646-62ed2454-f656-4d32-8c71-96e15acf08b4.png)
 ![Screenshot (19)](https://user-images.githubusercontent.com/55653032/184689649-7d3f9d7f-1d22-4a2a-87dc-4c5fd01fc3a2.png)
