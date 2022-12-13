@@ -1,50 +1,50 @@
 .link {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 .logo {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 .home {
-  min-height: 500px;
+    min-height: 500px;
 }
 .home .headline {
-  background-image: url("https://exit.al/en/wp-content/uploads/sites/3/2019/01/Cryptocurrency-Bitcoin-Blockchian.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    background-image: url("https://miro.medium.com/max/1400/0*gQIBjSvBKEmPyDPQ.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .home h1 {
-  color: white;
-  text-align: center;
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 70px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  line-height: 1;
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
+    color: white;
+    text-align: center;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 .home h2 {
-  padding: 15px;
-  color: #ff6d00;
+    padding: 15px;
+    color: #ff6d00;
 }
 .home h3 {
-  padding: 10px;
-  text-align: end;
-  color: black;
+    padding: 10px;
+    text-align: end;
+    color: black;
 }
 .news-grid {
-  min-height: 500px;
+    min-height: 500px;
 }
 
 .top-coins {
-  min-height: 500px;
+    min-height: 500px;
 }
